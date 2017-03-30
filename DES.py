@@ -17,6 +17,28 @@ def get_bits(plaintext):
         text_bits.extend(to_binary(ord(i)))
     return text_bits
 
+def encryptdua(plaintext, key_text):
+	keys = generate_keys(key_text)
+	text_bits = get_bits(plaintext)
+	text_bits = add_pads_if_necessary(text_bits)
+	
+	iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
+	results = map(int, iv_bits)	
+
+	for i in text_bits:
+		text_bits[i] ^= results[i]
+
+	final_cipher = ''
+	for i in range (0, len(text_bits), 64):
+		final_cipher += DES(text_bits, i, (i+64), keys)
+
+	hex_cipher = ''
+	i = 0
+	while i < len(final_cipher):
+		hex_cipher += bin_to_hex(final_cipher[i:i+4])
+		i = i+4
+	return hex_cipher
+
 def encrypt(plaintext, key_text, iv_bits):
 	keys = generate_keys(key_text)
 	text_bits = get_bits(plaintext)
@@ -29,7 +51,9 @@ def encrypt(plaintext, key_text, iv_bits):
 	for i in range(0, len(text_bits), 64):
 		final_cipher += DES(text_bits, i, (i+64), keys)
 	# conversion of binary cipher into hex-decimal form
-	print final_cipher
+	# print "ini final ciper"
+	# print final_cipher
+	# print "========"
 	hex_cipher = ''
 	i = 0
 	while i < len(final_cipher):
@@ -83,27 +107,48 @@ def main():
 		aa = 0
 		temp = []
 		iv_new = []
+		temp_jebret = []
 
-		while xx < math.ceil(len(plaintext)/8.0): #dibaca sampe plaintextnya habis
-			if xx == 0:
-				iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
-			else:
-				iv_bits = iv_new
-			print "ini iv_bits di def main"
-			print iv_bits
-			aa = 0
-			print new_plaintext
-			temp=[]
-			while aa < 8:
-				temp += new_plaintext.pop(0)
-				aa = aa + 1			
-			xx = xx + 1
-			print temp
-			cipher = encrypt(temp, key_text, iv_bits, jebret)
+		if len(plaintext) < 8:
+			cipher = encryptdua(plaintext, key_text)
 			print('the cipher is(in hex-decimal form)')
 			print(cipher)
-			iv_new = cipher
-			#print iv_new
+
+		else:
+			putaran = 1
+			while xx < math.ceil(len(plaintext)/8.0): #dibaca sampe plaintextnya habis
+
+				if xx == 0:
+					iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
+				else:
+					iv_bits = iv_new
+				# print "ini iv_bits di def main"
+				# print iv_bits
+				aa = 0
+				# print new_plaintext
+				temp=[]
+				while aa < 8:
+					temp += new_plaintext.pop(0)
+					aa = aa + 1			
+				xx = xx + 1
+				# print temp
+				cipher = encrypt(temp, key_text, iv_bits)
+				# print('the cipher is(in hex-decimal fform)')
+				# print(cipher)
+
+				jebret = cipher[0]
+				print "Hasil enkripsi putaran ke ",putaran,"adalah: "
+				print jebret
+				temp_jebret.append(jebret)
+				putaran = putaran + 1
+
+				iv_new = cipher[1]
+				# print iv_new
+				#print iv_new
+
+		print "Maka hasil enkripsi dari text",plaintext,"adalah: "
+		final_banget = ''.join(temp_jebret)
+		print final_banget
 
     else:
         cipher = str(input('Enter the message(in hex-decimal form)\n'))
