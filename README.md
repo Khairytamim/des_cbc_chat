@@ -1,9 +1,9 @@
-# KIJ-F01
+# KIJ-F07
 Tugas 1 - Implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC)
 
 Kelompok F01 :
-- Lucha Kamala P. (5114100115)
-- Irfan Hanif     (5114100192)
+- Fourir Akbar      (5114100115)
+- Fikry Khairytamim (5114100192)
 
 ## Pendahuluan
 Seiring dengan perkembangan teknologi informasi secara pesat, informasi dapat dengan mudah diakses oleh setiap orang. Hingga kini teknologi informasi pun menawarkan berbagai kemudahan bagi penggunanya. Maka dengan itu pula pengguna teknologi ini pun mengalami peningkatan secara pesat. Kian bertambahnya pengguna teknologi informasi dapat mengakibatkan meningkatnya berbagai tindak kejahatan dalam penggunaan teknologi informasi itu sendiri.
