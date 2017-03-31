@@ -65,3 +65,4 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 1. https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation
 2. http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm
 3. http://homepage.usask.ca/~dtr467/400/figure2-des_block.gif
+4. PPT Pak Tohari - secuity 04
