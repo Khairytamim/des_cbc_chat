@@ -51,9 +51,7 @@ def encrypt(plaintext, key_text, iv_bits):
 	for i in range(0, len(text_bits), 64):
 		final_cipher += DES(text_bits, i, (i+64), keys)
 	# conversion of binary cipher into hex-decimal form
-	# print "ini final ciper"
-	# print final_cipher
-	# print "========"
+	
 	hex_cipher = ''
 	i = 0
 	while i < len(final_cipher):
@@ -61,12 +59,12 @@ def encrypt(plaintext, key_text, iv_bits):
 		i = i+4
 	return hex_cipher, final_cipher
 
-def decrypt(cipher, key_text):
+def decrypt(temp, key_text, iv_bits):
 	keys = generate_keys(key_text)
 
 	text_bits = []
 	ciphertext = ''
-	for i in cipher:
+	for i in temp:
 		# conversion of hex-decimal form to binary form
 		ciphertext += hex_to_bin(i)
 	for i in ciphertext:
@@ -78,83 +76,109 @@ def decrypt(cipher, key_text):
 	for i in range(0, len(text_bits), 64):
 		bin_mess += DES(text_bits, i, (i+64), keys)
 
+	bin_jebret = map(int, bin_mess)
+	results = map(int, iv_bits)	
+
+	for i in bin_jebret:
+		bin_jebret[i] ^= results[i]
+
 	i = 0
 	text_mess = ''
 	while i < len(bin_mess):
-		text_mess += bin_to_text(bin_mess[i:i+8])
+		text_mess  += bin_to_text(bin_mess[i:i+8])
 		i = i+8
 	return text_mess.rstrip('\x00')
 
 def main():
     print('Encrypt = 1')
     print('Decrypt = 2')
+    #buat milih mau encrypt atau decrypt
     choice = int(input())
 
-    key_text = str(input('Enter the key\n'))
+    #masukan key
+    key_text = str(input('Masukan key\n'))
 
+    #jika key kurang dari 8
     if(len(key_text) < 8):
-    	print('Key must be 8 characters in length. Exiting...')
+    	print('Key harus terdiri dari 8 karakter. Keluar program...')
     	return
 
+    #jika yang dipilih adalah encrypt
     if(choice == 1):
-		plaintext = str(input('Enter the message(in Text-form)\n'))
-		#print plaintext
-		#ambil 8 karakter awal
+    	#intputkan teks yang akan kita encrypt
+		plaintext = str(input('Text yang mau encrypt: \n'))
+		
+		#isi dari array plaintext, dicopykan ke array new_plaintext
 		new_plaintext = []
 		new_plaintext.extend(plaintext)
-		#print new_plaintext		
+		
 		xx = 0
 		aa = 0
 		temp = []
 		iv_new = []
 		temp_jebret = []
 
+		#jika panjang dari plainteks kurang dari 8, maka proses enkripsi hanya dilakukan sekali saja
 		if len(plaintext) < 8:
 			cipher = encryptdua(plaintext, key_text)
-			print('the cipher is(in hex-decimal form)')
+			print "Hasil enkripsi dari",plaintext,"adalah: "
 			print(cipher)
 
-		else:
+		#jika panjang dari plainteks lebih dari 8, maka proses enkripsi dilakukan sebanyak jumlah teks yang diinputkan
+		else: 
+
 			putaran = 1
-			while xx < math.ceil(len(plaintext)/8.0): #dibaca sampe plaintextnya habis
+
+			#dibaca sampe plaintextnya habis
+			while xx < math.ceil(len(plaintext)/8.0): 
 
 				if xx == 0:
 					iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
 				else:
+					#mengganti iv_bits dengan hasil binary dari enkrispi putaran pertama
 					iv_bits = iv_new
-				# print "ini iv_bits di def main"
-				# print iv_bits
+				
 				aa = 0
-				# print new_plaintext
 				temp=[]
+				
 				while aa < 8:
-					temp += new_plaintext.pop(0)
-					aa = aa + 1			
+					#kalo di new_plaintext masih ada isinya
+					if new_plaintext:
+						#mengeluarkan isi dari array new_plainteks dari index ke 0, dan memasukkannya ke dalam array temp dari index ke 0
+						temp += new_plaintext.pop(0)
+						aa = aa + 1			
+					#kalo di new_plaintext sudah kosong
+					else:
+						break
+					
 				xx = xx + 1
-				# print temp
-				cipher = encrypt(temp, key_text, iv_bits)
-				# print('the cipher is(in hex-decimal fform)')
-				# print(cipher)
 
+				cipher = encrypt(temp, key_text, iv_bits)
+
+				#nilai cipher di index ke 0 merupakan hasil enkripsi, dipindahkan ke array jebret
 				jebret = cipher[0]
 				print "Hasil enkripsi putaran ke ",putaran,"adalah: "
 				print jebret
+
+				#hasil jebret, dimasukkan ke dalam array temp_jebret supaya nanti dapat digabungkan
 				temp_jebret.append(jebret)
 				putaran = putaran + 1
 
+				#nilai cipher di index ke 1 merupakan binary dari hasil enkripsi, dipindahkan ke array iv_new supaya nanti dapat dipindah ke array iv_bits
 				iv_new = cipher[1]
-				# print iv_new
-				#print iv_new
 
-		print "Maka hasil enkripsi dari text",plaintext,"adalah: "
-		final_banget = ''.join(temp_jebret)
-		print final_banget
+			print "Maka hasil enkripsi dari text",plaintext,"adalah: "
+
+			#hasil dari array temp_jebret yang masih terpisah2 oleh index digabungkan ke array final_banget dengan menghilangkan spasinya
+			final_banget = ''.join(temp_jebret)
+			print final_banget
 
     else:
-        cipher = str(input('Enter the message(in hex-decimal form)\n'))
-        plaintext = decrypt(cipher, key_text)
-        print('the original text is')
-        print(plaintext)
+		cipher = str(input('Enter the message(in hex-decimal form)\n'))
+		plaintext = decrypt(cipher, key_text)
+		print('the original text is')
+		print(plaintext)
+			
 
     print('exiting...')
     return
