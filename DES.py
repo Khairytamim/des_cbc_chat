@@ -46,7 +46,12 @@ def encrypt(plaintext, key_text, iv_bits):
 	final_cipher = ''
 	for i in range(0, len(text_bits), 64):
 		final_cipher += DES(text_bits, i, (i+64), keys)
+<<<<<<< HEAD
 	#konversi biner ke hexadecimal
+=======
+	# conversion of binary cipher into hex-decimal form
+	
+>>>>>>> f457486e1e291560a357694f11c3fcc8df033188
 	hex_cipher = ''
 	i = 0
 	while i < len(final_cipher):
@@ -54,11 +59,17 @@ def encrypt(plaintext, key_text, iv_bits):
 		i = i+4
 	return hex_cipher, final_cipher
 
+<<<<<<< HEAD
+=======
+def decrypt(temp, key_text):
+	keys = generate_keys(key_text)
+>>>>>>> f457486e1e291560a357694f11c3fcc8df033188
 
 def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 	keys = generate_keys(key_text) # key dirubah ke biner
 	text_bits = [] 
 	ciphertext = ''
+<<<<<<< HEAD
 	ciphertemp = []
 	for i in cipher: 
 		# conversion of hex-decimal form to binary form
@@ -97,9 +108,31 @@ def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 		text_temp.append(text_mess)
 		final_temp = ''.join(text_temp)
 	return final_temp.rstrip('\x00')
+=======
+	for i in temp:
+		# conversion of hex-decimal form to binary form
+		ciphertext += hex_to_bin(i)
+	for i in ciphertext:
+		text_bits.append(int(i))
+
+	text_bits = add_pads_if_necessary(text_bits)
+	keys.reverse()
+	bin_mess = ''
+	for i in range(0, len(text_bits), 64):
+		bin_mess += DES(text_bits, i, (i+64), keys)
+
+	i = 0
+	text_mess = ''
+	while i < len(bin_mess):
+		text_mess  += bin_to_text(bin_mess[i:i+8])
+		i = i+8
+	return text_mess.rstrip('\x00')
+
+>>>>>>> f457486e1e291560a357694f11c3fcc8df033188
 def main():
     print('Encrypt = 1')
     print('Decrypt = 2')
+    #buat milih mau encrypt atau decrypt
     choice = int(input())
 
     #masukan key
@@ -180,6 +213,7 @@ def main():
 			final_banget = ''.join(temp_jebret)
 			print final_banget
 
+<<<<<<< HEAD
     elif (choice == 2):
     	#final_cipher di simpen (biner)
     	#iv iterasi pertama 0000000, berikutnya pake final_cipher yang disimpen
@@ -187,6 +221,14 @@ def main():
         plaintext = decrypt(cipher, key_text)
         print "Maka hasil dekripsi dari text",cipher,"adalah: "
         print(plaintext)
+=======
+    else:
+		cipher = str(input('Enter the message(in hex-decimal form)\n'))
+		plaintext = decrypt(cipher, key_text)
+		print('the original text is')
+		print(plaintext)
+			
+>>>>>>> f457486e1e291560a357694f11c3fcc8df033188
 
     print('exiting...')
     return
