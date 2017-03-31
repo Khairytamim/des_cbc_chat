@@ -57,9 +57,6 @@ def encrypt(plaintext, key_text, iv_bits):
 
 def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 	keys = generate_keys(key_text) # key dirubah ke biner
-
-	#print "keys awal banget gan",keys
-
 	text_bits = [] 
 	ciphertext = ''
 	ciphertemp = []
@@ -67,15 +64,8 @@ def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 		# conversion of hex-decimal form to binary form
 		ciphertext += hex_to_bin(i)
 	ciphertemp = str(ciphertext)
-	#print ciphertext 
-	#print "ini ciphertemp = ",ciphertemp
 	for i in ciphertemp:
 		text_bits.append(i)
-	#print "text bits pertama " , text_bits
-	#print "ini text bits aslinya yang atas"
-	#a = len(ciphertext)
-	# b = ''.join(text_bits)
-	#print a
 	xx = 0
 	text_temp = []
 	for xx in range(0,len(text_bits)/64):
@@ -92,18 +82,11 @@ def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 		
 		if xx == 0:
 			keys.reverse()
-
-		#print "keys setelah reverse->",keys
-
 		bin_mess = ''
-		# print "ini bin mess atas->",len(bin_mess),bin_mess
 		for i in range(0, len(temp_new), 64):
 			bin_mess += DES(temp_new, i, (i+64), keys)
-		# print "ini bin mess bawah->",len(bin_mess),bin_mess
-		#print len(bin_mess)
 		i = 0
 		text_mess = ''
-		# print "ini text mess atas->",text_mess
 		while i < len(bin_mess):
 			text_mess += bin_to_text(bin_mess[i:i+8])
 			i = i+8
@@ -117,7 +100,6 @@ def decrypt(cipher, key_text): #cipher hexadecimal dan key 8 character
 def main():
     print('Encrypt = 1')
     print('Decrypt = 2')
-    #buat milih mau encrypt atau decrypt
     choice = int(input())
 
     #masukan key
