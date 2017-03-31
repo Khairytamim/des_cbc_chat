@@ -10,10 +10,6 @@ def apply_IP(block):
     r.extend(block)
     for i in range(0, 64):
         r[i] = block[IP[i]]
-    # print "ini block: "
-    # print block
-    # print "ini r: "
-    # print r
 
     return r
 
@@ -60,8 +56,6 @@ def s_box(block):
 
 
 def p_box(block):
-    """p-box permutation
-    """
     r = []
     r.extend(block)
     for i in range(32):
@@ -84,15 +78,9 @@ def iterate(left_block, right_block, keys, CIPHERS_FOR_EACH_ROUND):
                 right_block[i][k] ^= keys[j][di + k]
         right_block = s_box(right_block)
         right_block = p_box(right_block)
-        # print "ini right_block:"
-        # print right_block
-        # print "ini left_block"
-        # print left_block
         for i in range(0, 32):
             right_block[i] ^= left_block[i]
 
-        # print "2. ini right_block:"
-        # print right_block
         left_block = []
         left_block.extend(change_array)
 
