@@ -59,7 +59,7 @@ def encrypt(plaintext, key_text, iv_bits):
 		i = i+4
 	return hex_cipher, final_cipher
 
-def decrypt(temp, key_text, iv_bits):
+def decrypt(temp, key_text):
 	keys = generate_keys(key_text)
 
 	text_bits = []
@@ -75,12 +75,6 @@ def decrypt(temp, key_text, iv_bits):
 	bin_mess = ''
 	for i in range(0, len(text_bits), 64):
 		bin_mess += DES(text_bits, i, (i+64), keys)
-
-	bin_jebret = map(int, bin_mess)
-	results = map(int, iv_bits)	
-
-	for i in bin_jebret:
-		bin_jebret[i] ^= results[i]
 
 	i = 0
 	text_mess = ''
