@@ -13,6 +13,28 @@ def get_bits(plaintext):
         text_bits.extend(to_binary(ord(i)))
     return text_bits
 
+def encryptdua(plaintext, key_text):
+	keys = generate_keys(key_text)
+	text_bits = get_bits(plaintext)
+	text_bits = add_pads_if_necessary(text_bits)
+	
+	iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
+	results = map(int, iv_bits)	
+
+	for i in text_bits:
+		text_bits[i] ^= results[i]
+
+	final_cipher = ''
+	for i in range (0, len(text_bits), 64):
+		final_cipher += DES(text_bits, i, (i+64), keys)
+
+	hex_cipher = ''
+	i = 0
+	while i < len(final_cipher):
+		hex_cipher += bin_to_hex(final_cipher[i:i+4])
+		i = i+4
+	return hex_cipher
+
 def encrypt(plaintext, key_text, iv_bits):
 	keys = generate_keys(key_text)
 	text_bits = get_bits(plaintext)
