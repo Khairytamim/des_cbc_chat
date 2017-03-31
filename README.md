@@ -1,4 +1,4 @@
-# KIJ-F07
+# KIJ-F01
 Tugas 1 - Implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC)
 
 Kelompok F01 :
