@@ -60,3 +60,8 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 3. Terdapat library crypto pada Python. Tanpa harus membangun program sendiri, Python mempunya library untuk DES. import DES
 
 ## Terima Kasih
+
+## Referensi
+1. https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation
+2. http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm
+3. http://homepage.usask.ca/~dtr467/400/figure2-des_block.gif
