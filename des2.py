@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Lyle Scott III
-lyle@digitalfoo.net
-http://www.digitalfoo.net
-
-CREDITS
-This program was written by reading 'DES Algorithm Illustrated' over and over
-and over. Thanks for this!
--- http://orlingrabbe.com/des.htm
--- by J. Orlin Grabbe
-"""
 import sys
 
 

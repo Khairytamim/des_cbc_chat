@@ -5,8 +5,7 @@ from DESUtil import get_column, get_row, to_binary, left_shift
 
 
 def apply_IP(block):
-    """input permutaion
-    """
+    #menambahkan isi block yang telah di permutasi dengan IP
     r = []
     r.extend(block)
     for i in range(0, 64):
@@ -30,9 +29,7 @@ def apply_FP(block):
 
 
 def e_box(block):
-    """exapansion permutation to expand 32 bit block into 48 bit block
-       also called E-box
-    """
+    #memperbesar block yang dari 32 bit menjadi 48 bit
     dummy = []
     for i in range(48):
         dummy.append(block[E[i]])
@@ -45,8 +42,8 @@ def e_box(block):
 
 #ngerubah 6 bit block jadi 4 bit. totalnya jadi 32 bit
 def s_box(block):
-    """s-box function to reduce 48 bit block to 32 bit block
-    """
+    #menyimpelkan blok 48bit menjadi 32bit dengan cara membuat tabelnya
+    #yang bisa paling pinggirnya
     for i in range(0, 8):
         row = str(block[i][0]) + str(block[i][-1])
         column = ''
@@ -73,10 +70,9 @@ def p_box(block):
 
 
 def iterate(left_block, right_block, keys, CIPHERS_FOR_EACH_ROUND):
-    """iterating  for the 16 rounds
-    """
     for j in range(0, 16):
-        change_array = []
+        change_array = [] #change array diisi dengan right block
+        #right block diisi oleh 
         change_array.extend(right_block)
         right_block = e_box(right_block)
         #ngerubah dari 32bits ke 48bits
@@ -109,13 +105,13 @@ def iterate(left_block, right_block, keys, CIPHERS_FOR_EACH_ROUND):
 
 
 def DES(text_bits, start, end, keys, CIPHERS_FOR_EACH_ROUND=None):
-    """Heart of the program : DES algorithm
-    """
+    #penggabungan 
     block = []
     for i in range(start, end):
         block.append(text_bits[i])
 
     block = apply_IP(block)
+    #isi block sudah di permutasi dan akan dibagi menjadi 2 bagian
 
     left_block = block[0:32]
     right_block = block[32:64]
@@ -135,8 +131,7 @@ def DES(text_bits, start, end, keys, CIPHERS_FOR_EACH_ROUND=None):
 
 
 def generate_keys(key_text):
-    """ key generation
-    """
+    #merubah key menjadi biner
     key = []
     for i in key_text:
         key.extend(to_binary(ord(i)))
