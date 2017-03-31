@@ -1,4 +1,4 @@
-# KIJ-F07
+# KIJ-F01
 Tugas 1 - Implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC)
 
 Kelompok F01 :
@@ -39,8 +39,8 @@ dilampirkan kemudian) <br/>
 2.4 Hasil iterasi ke-16 adalah L16 dan R16 yang kemudian digabungkan <br/>
 2.5 L16+R16 adalah hasil akhir dari chiper text <br/>
 
-### Langkah implementasi pada DES dengan algoritma Counter
-Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Counter (CTR):
+### Langkah implementasi pada DES dengan algoritma Cipher Block Chaining
+Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC):
 1. Enkripsi <br/>
 1.1 CBC menggunakan plaintext sebagai input pada algoritma DES <br/>
 1.2 Plaintext nantinya akan di XOR dengan IV <br/>
