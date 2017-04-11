@@ -64,7 +64,7 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 2.3 Hasil XOR tersebut merupakan hasil teks aslinya <br/>
 2.4 Input text yang diinputkan tadi akan dijadikan sebagai IV di putaran selanjutnya <br/>
 
-### Langkah implementasi pada DES dengan algoritma Cipher Block Chaining
+### Langkah implementasi pada DES dengan algoritma Cipher Block Chaining dengan menggunakan Client dan Server
 1. Jalankan server.py dengan mengetikkan python server.py
 ![selection_004](https://cloud.githubusercontent.com/assets/16026826/24903607/22fd6180-1ed8-11e7-84e8-300295699d5c.png)
 2. Jalankan client.py dengan mengetikkan python client.py
