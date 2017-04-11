@@ -15,6 +15,7 @@ def get_bits(plaintext):
 
 def encryptdua(plaintext):
 	key_text = 'kij12345'
+    #hahhaha
 	keys = generate_keys(key_text)
 	text_bits = get_bits(plaintext)
 	text_bits = add_pads_if_necessary(text_bits)
