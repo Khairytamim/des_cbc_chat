@@ -68,7 +68,7 @@ def encrypt(plaintext, iv_bits):
 		i = i+4
 	return hex_cipher, final_cipher
 
-def decrypt_cbc(cipher, iv_bits): #cipher hexadecimal dan key 8 character\
+def decryptdua(cipher, iv_bits): #cipher hexadecimal dan key 8 character\
 	key_text = "kij12345"
 	keys = generate_keys(key_text) # key dirubah ke biner
 	text_bits = [] 
