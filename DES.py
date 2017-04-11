@@ -23,7 +23,7 @@ def encryptdua(plaintext):
 	iv_bits = '0000000000000000000000000000000000000000000000000000000000000000'
 	results = map(int, iv_bits)	
 
-	print "ini results -> ",results
+	# print "ini results -> ",results
 
 	for i in text_bits:
 		text_bits[i] ^= results[i]
