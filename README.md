@@ -39,6 +39,17 @@ dilampirkan kemudian) <br/>
 2.4 Hasil iterasi ke-16 adalah L16 dan R16 yang kemudian digabungkan <br/>
 2.5 L16+R16 adalah hasil akhir dari chiper text <br/>
 
+## Teknik Operasi
+Berikut ini merupakan beberapa teknik operasi yang digunakan dalam implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC):
+### Permutasi
+Permutasi adalah teknik operasi yang digunakan untuk menyusun urutan input biner dalam urutan yang berbeda dari urutan semula sesuai dengan urutan pada tabel mutlak atau statis yang telah ditetapkan. 
+### Left Shift
+Left Shift adalah teknik operasi yang digunakan untuk melakukan pergeseran urutan input biner ke arah kiri sebanyak nilai pergeseran yang telah ditetapkan pada tabel mutlak atau statis. 
+### XOR
+XOR (Exclusive OR) adalah teknik operasi yang digunakan untuk menghasilkan angka biner yaitu 0 atau 1. Teknik operasi ini akan menghasilkan keluaran angka biner 0 apabila kedua inputan sama, dan menghasilkan keluaran angka biner 1 apabila kedua inputan berbeda. 
+### S-Box
+S-Box (Substitution-Box) adalah teknik operasi yang digunakan untuk menggantikan nilai input biner menjadi nilai biner pada state yang ditunjuk pada tabel mutlak atau statis. Nilai baris yang ditunjuk merupakan gabungan nilai input biner bit pertama dan bit terakhir. Sisanya merupakan nilai kolom yang ditunjuk. 
+
 ### Langkah implementasi pada DES dengan algoritma Cipher Block Chaining
 Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (DES) dengan menggunakan mode operasi Cipher Block Chaining (CBC):
 1. Enkripsi <br/>
@@ -52,6 +63,16 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 2.2 Output dari hasil decrypt tersebut akan diXOR dengan IV <br/>
 2.3 Hasil XOR tersebut merupakan hasil teks aslinya <br/>
 2.4 Input text yang diinputkan tadi akan dijadikan sebagai IV di putaran selanjutnya <br/>
+
+### Langkah implementasi pada DES dengan algoritma Cipher Block Chaining
+1. Jalankan server.py dengan mengetikkan python server.py
+![selection_004](https://cloud.githubusercontent.com/assets/16026826/24903607/22fd6180-1ed8-11e7-84e8-300295699d5c.png)
+2. Jalankan client.py dengan mengetikkan python client.py
+![selection_005](https://cloud.githubusercontent.com/assets/16026826/24903658/3e01f112-1ed8-11e7-8782-ff2811d079b0.png)
+3. Dari client memulai mengirimkan chat ke server
+![selection_006](https://cloud.githubusercontent.com/assets/16026826/24903685/51fdf968-1ed8-11e7-8213-a4fe881ab5d6.png)
+4. Server menerima pesan dari client, dan server membalas mengirimkan pesan ke client
+![selection_007](https://cloud.githubusercontent.com/assets/16026826/24903700/60c7b65a-1ed8-11e7-8368-5b39d2f091e3.png)
 
 ## Kesimpulan
 ## Saran
