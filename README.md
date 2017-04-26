@@ -74,6 +74,12 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 4. Server menerima pesan dari client, dan server membalas mengirimkan pesan ke client
 ![selection_007](https://cloud.githubusercontent.com/assets/16026826/24903700/60c7b65a-1ed8-11e7-8368-5b39d2f091e3.png)
 
+### Diffie-Hellman Key Exchange
+1. First public-key type scheme proposed
+2. By Diffie & Hellman in 1976 along with the exposition of public key concepts
+3. Is a practical method for public exchange of a secret key
+4. Used in a number of commercial products
+
 ## Kesimpulan
 ## Saran
 1. Semua implementasi algoritma yang kami buat menggunakan format yang sedang dibutuhkan. Misalkan sedang membutuhkan format string, maka kami merubahnya ke string. Lalu ketika butuh sebaga integer, kami merubahnya kembali menjadi integer.
