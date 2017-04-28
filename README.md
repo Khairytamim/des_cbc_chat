@@ -80,6 +80,9 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 3. Is a practical method for public exchange of a secret key
 4. Used in a number of commercial products
 
+## Cara kerja dari Chat menggunakan Diffie-Hellman
+![sc_diffie_hellman](https://cloud.githubusercontent.com/assets/15223349/25518190/00dca0dc-2c1d-11e7-88e2-86205e3b4c8f.jpg)
+
 ## Kesimpulan
 ## Saran
 1. Semua implementasi algoritma yang kami buat menggunakan format yang sedang dibutuhkan. Misalkan sedang membutuhkan format string, maka kami merubahnya ke string. Lalu ketika butuh sebaga integer, kami merubahnya kembali menjadi integer.
