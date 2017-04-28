@@ -14,9 +14,13 @@ def get_bits(plaintext):
     return text_bits
 
 def encryptdua(plaintext):
-	key_text = 'kij12345'
+	# key_text = 'kij12345'
+	key_text = open('key_dh.txt','rb')
+	berhasil_dong = key_text.read()
+	print ('ini berhasil dong->', berhasil_dong)
+	# print ("key_text sob-> ", key_text)
     #hahhaha
-	keys = generate_keys(key_text)
+	keys = generate_keys(berhasil_dong)
 	text_bits = get_bits(plaintext)
 	text_bits = add_pads_if_necessary(text_bits)
 	
@@ -40,7 +44,8 @@ def encryptdua(plaintext):
 	return hex_cipher
 
 def encrypt(plaintext, iv_bits):
-	key_text = "kij12345"
+	# key_text = "kij12345"
+	key_text = open('key_dh.txt','rb')
 	keys = generate_keys(key_text)
 	text_bits = get_bits(plaintext)
 	text_bits = add_pads_if_necessary(text_bits)
@@ -69,7 +74,8 @@ def encrypt(plaintext, iv_bits):
 	return hex_cipher, final_cipher
 
 def decryptdua(cipher, iv_bits): #cipher hexadecimal dan key 8 character\
-	key_text = "kij12345"
+	# key_text = "kij12345"
+	key_text = open('key_dh.txt','rb')
 	keys = generate_keys(key_text) # key dirubah ke biner
 	text_bits = [] 
 	ciphertext = ''
@@ -141,8 +147,11 @@ def decryptdua(cipher, iv_bits): #cipher hexadecimal dan key 8 character\
 	return final_temp.rstrip('\x00'), cipher_iv
 
 def decrypt(cipher): #cipher hexadecimal dan key 8 character
-	key_text = "kij12345"
-	keys = generate_keys(key_text) # key dirubah ke biner
+	key_text = open('key_dh.txt','rb')
+	berhasil_dong = key_text.read()
+	
+	# key_text = open('key_dh.txt','rb')
+	keys = generate_keys(berhasil_dong) # key dirubah ke biner
 	text_bits = [] 
 	ciphertext = ''
 
