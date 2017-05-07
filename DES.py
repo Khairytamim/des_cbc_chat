@@ -17,7 +17,6 @@ def encryptdua(plaintext):
 	# key_text = 'kij12345'
 	key_text = open('key_dh.txt','rb')
 	berhasil_dong = key_text.read()
-	print("isi plain text->", plaintext)
 	print ('ini berhasil dong->', berhasil_dong)
 	# print ("key_text sob-> ", key_text)
     #hahhaha
