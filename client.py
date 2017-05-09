@@ -5,12 +5,14 @@ import string
 from DES import *
 from rsa import *
 
-s = socket.socket()
-host = socket.gethostname()
-port = 12228
+# s = socket.socket()
+# host = socket.gethostname()
+# port = 12228
 
-s.connect((host, port))
-print 'Terhubung dengan server dengan IP : ', host
+# s.connect((host, port))
+s = socket.socket()                   
+s.connect(('127.0.0.1', 8820))
+print 'Sudah terhubung'
 
 index_rsa = 0
 
