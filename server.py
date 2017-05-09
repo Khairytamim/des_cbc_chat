@@ -8,7 +8,7 @@ from rsa import *
 
 s = socket.socket()
 host = socket.gethostname()
-port = 12229
+port = 12228
 s.bind((host, port))
 s.listen(5)
 c = None

@@ -7,7 +7,7 @@ from rsa import *
 
 s = socket.socket()
 host = socket.gethostname()
-port = 12229
+port = 12228
 
 s.connect((host, port))
 print 'Terhubung dengan server dengan IP : ', host
