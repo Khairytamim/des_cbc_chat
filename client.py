@@ -9,7 +9,7 @@ from DES import *
 from rsa import *
 
 s = socket.socket()                   
-s.connect(('10.151.43.191', 8820))
+s.connect(('127.0.0.1', 8821))
 print 'Sudah terhubung'
 
 index_rsa = 0

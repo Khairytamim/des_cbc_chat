@@ -106,28 +106,3 @@ def decrypt_rsa(pub1, pub2, ciphertext):
     plain = [chr((char ** pub1) % pub2) for char in ciphertext]
     #Return the array of bytes as a string
     return ''.join(plain)
-    
-
-if __name__ == '__main__':
-    '''
-    Detect if the script is being run directly by the user
-    '''
-    print "RSA Encrypter/ Decrypter"
-    p = int(raw_input("Enter a prime number (17, 19, 23, etc): "))
-    q = int(raw_input("Enter another prime number (Not one you entered above): "))
-    print "Generating your public/private keypairs now . . ."
-    public, private = generate_keypair(p, q)
-    print "Your public key is ", public ," and your private key is ", private
-    message = raw_input("Enter a message to encrypt with your private key: ")
-    encrypted_msg = encrypt_rsa(private, message)
-    print "Your encrypted message is: "
-    print encrypted_msg
-    print ''.join(map(lambda x: str(x), encrypted_msg))
-    # jebret = ''.join(map(lambda x: str(x), encrypted_msg))
-    # print("enrkip biasa -> ",jebret)
-    print "Decrypting message with public key ", public ," . . ."
-    print "Your message is:"
-    print decrypt_rsa(public, encrypted_msg)
-
-#enkrip -> pake private key
-#dekrip -> pake public key
