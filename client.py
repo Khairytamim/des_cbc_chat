@@ -49,13 +49,6 @@ while True:
 
 	xxx = 0
 
-	# s = socket.socket()
-	# host = socket.gethostname()
-	# port = 12222
-
-	# s.connect((host, port))
-	# print 'Terhubung dengan server dengan IP : ', host
-
 	while True:
 		xxx = xxx + 1
 
