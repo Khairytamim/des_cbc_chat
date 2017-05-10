@@ -49,14 +49,6 @@ while True:
 			enkrip_a = encrypt_rsa(private, a)
 			pickle.dump(enkrip_a, open("save.a","wb"))
 			c.sendall("sudah ditulis juga")
-
-			# enkrip_qFinal = ''.join(map(lambda x: str(x), enkrip_q))
-			# enkrip_aFinal = ''.join(map(lambda x: str(x), enkrip_a))
-			# print("ini enrkip q -> ",enkrip_qFinal,"ini enrkip a -> ",enkrip_aFinal)
-			# print("Dekrip dengan public key ",public)
-			# print("q -> ",decrypt_rsa(public, enkrip_q))
-			# print("a -> ",decrypt_rsa(public, enkrip_a))
-
 			index_rsa = index_rsa + 1
 	else:
 		terimaQ = c.recv(1024)
