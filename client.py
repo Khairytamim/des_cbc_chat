@@ -24,7 +24,6 @@ while True:
 		print a, pub1, pub2
 		favoriteq = pickle.load(open("save.q","rb"))
 		print("ini enkrip q -> ",favoriteq)
-		# print("q -> ",decrypt_rsa(int(pub1), int(pub2), favoriteq))
 		kirimQ = decrypt_rsa(int(pub1), int(pub2), favoriteq)
 		print pub1, pub2, favoriteq
 		print("kirim Q ->"), kirimQ
@@ -32,7 +31,6 @@ while True:
 		print b
 		favoritea = pickle.load(open("save.a","rb"))
 		print("ini enkrip a -> ",favoriteq)
-		# print("a -> ",decrypt_rsa(int(pub1), int(pub2), favoritea))
 		kirimA = decrypt_rsa(int(pub1), int(pub2), favoritea)
 		print kirimA
 		s.send(str(kirimQ))
@@ -42,28 +40,6 @@ while True:
 
 		q = int(kirimQ)
 		a = int(kirimA)
-
-
-		# pickle.load(enkrip_q, open("save.q","wb"))
-		# s.recv(1024)
-		# favoritePub = pickle.load(open("save.pub","rb"))
-		# print favoritePub
-		# favoritePub = s.recv(1024)
-		# print favoritePub
-		# PubKey = pickle.loads(favoritePub)
-		# print 'Received', repr(PubKey)
-		# favoriteq = pickle.load(open("save.q","rb"))
-		# print("ini enkrip q -> ",favoriteq)
-		# favoritea = pickle.load(open("save.a","rb"))
-		# print("ini enrkip a -> ",favoritea)
-		# enkrip_qFinal = ''.join(map(lambda x: str(x), favoriteq))
-		# enkrip_aFinal = ''.join(map(lambda x: str(x), favoritea))
-		# print("ini enrkip q -> ",enkrip_qFinal,"ini enrkip a -> ",enkrip_aFinal)
-		# print("Dekrip dengan public key ",favoritePub)
-		# print("q -> ",decrypt_rsa(favoritePub, favoriteq))
-		# print("a -> ",decrypt_rsa(favoritePub, favoritea))
-		# q = decrypt_rsa(public, enkrip_q)
-		# print q
 
 	# pubKey = s.recv(1024)
 	# print("ini pubKey -> ", pubKey)
