@@ -67,21 +67,8 @@ while True:
 
 		xxx = 0
 
-		# s = socket.socket()
-		# host = socket.gethostname()
-		# port = 12222
-		# s.bind((host, port))
-		# s.listen(5)
-		# c = None
-
 		while True:
 			xxx = xxx + 1
-			
-				#diffie-hellman
-				# if xxx == 2:
-					#rsa
-
-				# elif xxx == 2:
 			if xxx == 1:
 				#diffie-hellman
 				yb = c.recv(10)
