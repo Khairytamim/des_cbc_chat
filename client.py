@@ -8,11 +8,6 @@ import string
 from DES import *
 from rsa import *
 
-# s = socket.socket()
-# host = socket.gethostname()
-# port = 12228
-
-# s.connect((host, port))
 s = socket.socket()                   
 s.connect(('10.151.43.191', 8820))
 print 'Sudah terhubung'
