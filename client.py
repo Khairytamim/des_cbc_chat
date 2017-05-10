@@ -40,43 +40,7 @@ while True:
 
 		q = int(kirimQ)
 		a = int(kirimA)
-
-	# pubKey = s.recv(1024)
-	# print("ini pubKey -> ", pubKey)
-	# satu = pubKey.split('\n')
-	# print satu[0]
-	# dua = satu[0].split('I')
-	# fix_dua = int(dua[1])
-	# print("ini fix dua -> ",fix_dua)
-	# tiga = satu[1].split('I')
-	# fix_tiga = int(tiga[1])
-	# print("ini fix tiga -> ",fix_tiga)
-	# gabung = []
-	# gabung.append(fix_dua)
-	# gabung.append(fix_tiga)
-	# print gabung
-	# s.sendall("Client : OK. Public key sudah diterima")
-	# s.recv(1024)
-	# baca_satu = open('pubKey.txt','rb')
-	# pubKey = baca_satu.read()
-	# print pubKey
-	# enkrip_q = open('enkrip_q.txt','rb')
-	# berhasil_dong = enkrip_q.read()
-	# print berhasil_dong
-	# qAsli = decrypt_rsa(berhasil_dong, pubKey)
-	# print qAsli
-	# a = gabung.replace("[", "(")
-	# print a
-	# gabungStr = str(gabung)
-	# tup = str(tuple(gabungStr))
-	# trans = tup.translate(tup,"'")
-	# print trans
-	# data_arr = ', 'join(dua, tiga)
-	# print data_arr
-	# dua = satu.split('(I')
 	
-	
-
 	xb = input('masukkan random key untuk bob (xb) : ')
 	int_xb = int(xb)
 	yb = (a**int_xb)%q
