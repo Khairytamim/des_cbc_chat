@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import socket
 import cPickle
 import pickle
@@ -11,7 +14,7 @@ from rsa import *
 
 # s.connect((host, port))
 s = socket.socket()                   
-s.connect(('127.0.0.1', 8820))
+s.connect(('10.151.43.191', 8820))
 print 'Sudah terhubung'
 
 index_rsa = 0
@@ -28,7 +31,8 @@ while True:
 		print("ini enkrip q -> ",favoriteq)
 		# print("q -> ",decrypt_rsa(int(pub1), int(pub2), favoriteq))
 		kirimQ = decrypt_rsa(int(pub1), int(pub2), favoriteq)
-		print kirimQ
+		print pub1, pub2, favoriteq
+		print("kirim Q ->"), kirimQ
 		b = s.recv(1024)
 		print b
 		favoritea = pickle.load(open("save.a","rb"))

@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import socket
 import random
 import string
@@ -6,13 +9,8 @@ import pickle
 from DES import *
 from rsa import *
 
-# s = socket.socket()
-# host = socket.gethostname()
-# port = 12225
-# s.bind((host, port))
-# s.listen(5)
 s = socket.socket()  
-s.bind(('0.0.0.0', 8820))                    
+s.bind(('0.0.0.0', 8821))                    
 
 s.listen(1)     
 c = None
