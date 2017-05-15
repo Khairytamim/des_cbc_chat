@@ -27,7 +27,7 @@ while True:
 
 		if index_rsa == 0:
 			prima_1 = int(raw_input("Masukkan bilangan prima: "))
-			prima_2 = int(raw_input("Masukkan bilangan prima: (harus berbeda dengan prima 1)"))
+			prima_2 = int(raw_input("Masukkan bilangan prima: (harus berbeda dengan prima 1) "))
 			print("Membuat public key + private key ")
 			public,  private = generate_keypair(prima_1, prima_2)
 			print("Public key -> ",public," dan Private key -> ",private)
@@ -43,7 +43,6 @@ while True:
 			q = qdana_split[0]
 			a = qdana_split[1]
 			enkrip_q = encrypt_rsa(private, q)
-			print "====", enkrip_q
 			pickle.dump(enkrip_q, open("save.q","wb"))
 			c.sendall("sudah ditulis")
 			enkrip_a = encrypt_rsa(private, a)

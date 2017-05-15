@@ -21,18 +21,15 @@ while True:
 		pub2 = s.recv(1024)
 		s.sendall("Pub2 sudah diterima")
 		a = s.recv(1024)
-		print a, pub1, pub2
 		favoriteq = pickle.load(open("save.q","rb"))
-		print("ini enkrip q -> ",favoriteq)
 		kirimQ = decrypt_rsa(int(pub1), int(pub2), favoriteq)
-		print pub1, pub2, favoriteq
-		print("kirim Q ->"), kirimQ
 		b = s.recv(1024)
-		print b
 		favoritea = pickle.load(open("save.a","rb"))
-		print("ini enkrip a -> ",favoriteq)
 		kirimA = decrypt_rsa(int(pub1), int(pub2), favoritea)
-		print kirimA
+		print("Nilai Q dari server sebelum di dekrip adalah :",favoriteq)
+		print("Nilai Q dari server setelah di dekrip adlah :",kirimQ)
+		print("Nilai A dari server sebelum di dekrip adalah :",favoritea)
+		print("Nilai A dari server setelah di dekrip adlah :",kirimA)
 		s.send(str(kirimQ))
 		s.recv(1024)
 		s.send(str(kirimA))

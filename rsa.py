@@ -90,12 +90,12 @@ def generate_keypair(p, q):
 def encrypt_rsa(pk, plaintext):
     #Unpack the key into it's components
     key, n = pk
-    print key
-    print n
+    # print key
+    # print n
     #Convert each letter in the plaintext to numbers based on the character using a^b mod m
     cipher = [(ord(char) ** key) % n for char in plaintext]
     
-    print 'cipher-> ', cipher
+    # print 'cipher-> ', cipher
     #Return the array of bytes
     return cipher
 
