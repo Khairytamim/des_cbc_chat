@@ -83,6 +83,49 @@ Berikut ini merupakan langkah implementasi algoritma Data Encryption Standard (D
 ## Cara kerja dari Chat menggunakan Diffie-Hellman
 ![sc_diffie_hellman](https://cloud.githubusercontent.com/assets/15223349/25518190/00dca0dc-2c1d-11e7-88e2-86205e3b4c8f.jpg)
 
+## Penambahan RSA pada chatting yang menggunakan Diffie-Hellman
+## RSA
+RSA di bidang kriptografi adalah sebuah algoritma pada enkripsi public key. RSA merupakan algoritma pertama yang cocok untuk digital signature seperti halnya ekripsi, dan salah satu yang paling maju dalam bidang kriptografi public key. RSA masih digunakan secara luas dalam protokol electronic commerce, dan dipercaya dalam mengamnkan dengan menggunakan kunci yang cukup panjang.
+## Step by Step
+Langkah-langkah dalam mengenkripsi atau mengdekripsi RSA adalah sebagai berikut :
+Pilih 2 buah bilangan prima p dan q.
+Hitung nilai n = p * q , (usahakan agar setidaknya n > 255 agar dapat mewakili seluruh karakter ASCII).
+Hitung nilai m = (p-1) * (q-1).
+Cari nilai e , dimana e merupakan relatif prima dari m.
+Cari nilai d , yang memenuhi persamaan ed ≡ 1 mod m atau d = e-1 mod m.
+Kunci public (e , n) dan kunci private (d , n).
+Fungsi enkripsi → E (ta)=tae mod n ; dimana ta merupakan karakter ke-a dari message (pesan) yang akan dienkripsi.
+Fungsi dekripsi → D (ca)=cad mod n ; dimana ca merupakan karakter ke-a dari ciphertext yang akan didekripsikan.
+Contoh kasus, misalnya terdapat dua orang, Andi yang ingin mengirimkan pesan kepada Budi, maka komputer Andi akan memberitahukan kepada komputer Budi untuk membuat kunci publik dan kunci private (kunci dibuat oleh orang yang akan menerima pesan, sehingga kunci private tidak akan pernah meninggalkan komputer penerima, sedangkan kunci publik akan dikirimkan kepada komputer pengirim pesan, dimana kunci publik hanya bisa digunakan untuk meng- enkripsi pesan).
+
+Komputer Budi akan melakukan langkah-langkah berikut :
+Men- generate bilangan prima p = 59 dan q = 67.
+Menghitung nilai n = 59 * 67 = 3953.
+Menghitung nilai m = (59-1) * (67-1) = 3828.
+Mencari nilai e yang relatif prima terhadap m.
+
+Pada langkah berikutnya, akan dicari nilai d dimana ed ≡ 1 (mod m) atau d=e-1 mod m
+
+Langkah selanjutnya adalah menentukan kunci publik dan kunci private sebagai berikut :
+Kunci publik = 277, 3953
+Kunci private = 2833, 3953
+Kunci private tetap berada dikomputer Budi, namun kunci publik dikirimkan ke komputer Andi, dimana komputer Andi akan menggunakan kunci publik untuk meng-enkripsi pesan yang akan dikirimkan ke komputer Budi.
+Langkah selanjutnya komputer Andi akan mengenkripsi pesan yaitu : "GO" maka komputer Andi perlu mengetahui kode ASCII karakter "G" dan "O" yaitu : 71 dan 79 , kemudian melakukan enkripsi dengan fungsi enkripsi → E(ta)=tae mod n :
+E(71)=71277 mod 3953 = 1798
+E(79)=79277 mod 3953 = 2444
+Jadi komputer Andi akan mengirimkan pesan dengan angka c1=1798 dan c2=2444 kepada komputer Budi.
+Dalam perhitungan diatas, untuk mencari sisa bagi pangkat yang besar dapat menggunakan algoritma modular exponent 
+
+Langkah terakhir komputer Budi akan mendekripsi ciphertext c1=1798 dan c2=2444 dengan fungsi dekripsi → D(ca)=cad mod n
+
+D(1798)=17982833 mod 3953 = 71 → "G"
+D(2444)=24442833 mod 3953 = 79 → "O"
+Dapat terlihat bahwa ciphertext yang dikirimkan oleh Andi dikembalikan menjadi pesan "GO"
+
+## Hasil Impementasi
+![kij-rsa](https://cloud.githubusercontent.com/assets/16026826/26068645/5ad17a32-39c8-11e7-8f22-73b8b6f65a8c.png)
+
+
 ## Kesimpulan
 ## Saran
 1. Semua implementasi algoritma yang kami buat menggunakan format yang sedang dibutuhkan. Misalkan sedang membutuhkan format string, maka kami merubahnya ke string. Lalu ketika butuh sebaga integer, kami merubahnya kembali menjadi integer.
